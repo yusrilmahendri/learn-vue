@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { nextTick, ref } from 'vue';
 
     let count = 0;
     let counts = ref(0);
@@ -18,11 +18,18 @@ import { ref } from 'vue';
         counts.value++;
     }
 
-    function countss(){
+    // dom next tict 
+    async function countss(){
        counter.value = {
         ...counter.value,
         count: counter.value.count + 1
        }
+
+       await nextTick();
+
+       counter.value.count++
+       await nextTick();
+         counter.value.count++
     }
 </script>
 
@@ -32,7 +39,7 @@ import { ref } from 'vue';
     <h1 id="counts">{{ counter.name }} : {{ counter.count }}</h1>
     <button v-on:click="counterIncrement">Increment</button>
     <button v-on:click="counterReactive">Increment reactive</button>
-    <button v-on:click="countss">Increment reactive</button>
+    <button v-on:click="countss">Increments</button>
 </template>
 
 

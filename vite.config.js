@@ -8,7 +8,8 @@ export default defineConfig({
     rollupOptions: {
       input: 'index.html',
       hello: 'hello.html',
-      counter: 'counter.html'
+      counter: 'counter.html',
+      reactive: 'say-hello.html'
     }
   }
 })
